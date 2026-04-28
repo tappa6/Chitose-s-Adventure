@@ -36,8 +36,9 @@ public class InGameSw : MonoBehaviour
     public BattleMessageUI battleMessageUI; // メッセージUIへの参照
 
     //Audio
-    public AudioClip sound1;
-    public AudioClip sound2;
+    public AudioClip attackSound1;
+    public AudioClip attackSound2;
+    public AudioClip defenceSound1;
     AudioSource audioSource;
 
     //Coroutine
@@ -60,7 +61,7 @@ public class InGameSw : MonoBehaviour
         ObjectOff();
         dialogUI.gameObject.SetActive(true);
         animator.SetTrigger("Attack1");
-        audioSource.PlayOneShot(sound1);
+        audioSource.PlayOneShot(attackSound1);
         battleSystem.Attack1(player, enemy);
         if(routine != null) 
         {
@@ -75,6 +76,7 @@ public class InGameSw : MonoBehaviour
         dialogUI.gameObject.SetActive(true);
         animator.SetTrigger("Block");
         animator.SetBool("IdleBlock", true);
+        audioSource.PlayOneShot(defenceSound1);
         battleSystem.Defence(player);
         if(routine != null) 
         {
@@ -115,7 +117,7 @@ public class InGameSw : MonoBehaviour
                 battleMessageUI.ShowMessage(msg);
             }
             animator.SetTrigger("Attack2");
-            audioSource.PlayOneShot(sound2);
+            audioSource.PlayOneShot(attackSound2);
             yield return new WaitForSeconds(1f);
             battleSystem.Skill(player, enemy);
         }
@@ -168,7 +170,7 @@ public class InGameSw : MonoBehaviour
         if (player.DefencePoint)
         {
             AttackPoint = 2;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.5f);
             battleSystem.Skill(enemy, player);
         }
         else
