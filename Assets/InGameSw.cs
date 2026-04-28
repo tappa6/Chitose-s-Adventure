@@ -61,7 +61,7 @@ public class InGameSw : MonoBehaviour
         dialogUI.gameObject.SetActive(true);
         animator.SetTrigger("Attack1");
         audioSource.PlayOneShot(sound1);
-        battleSystem.Attack(player, enemy);
+        battleSystem.Attack1(player, enemy);
         if(routine != null) 
         {
             routine = null;
@@ -174,7 +174,7 @@ public class InGameSw : MonoBehaviour
         else
         {
             AttackPoint = 1;
-            battleSystem.Attack(enemy, player);
+            battleSystem.Attack2(enemy, player);
         }
 
         if (player.DefencePoint == false)

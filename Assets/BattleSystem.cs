@@ -12,15 +12,20 @@ public class BattleSystem : MonoBehaviour
 
     }
 
-    public void Attack(CharacterStats attacker, CharacterStats target)
+    public void Attack1(CharacterStats attacker, CharacterStats target)
     {
         float damage = Random.Range(20, 51);
         target.TakeDamage(damage);
     }
 
+    public void Attack2(CharacterStats attacker, CharacterStats target)
+    {
+        float damage = Random.Range(45, 61);
+        target.TakeDamage(damage);
+    }
     public void Skill(CharacterStats attacker, CharacterStats target)
     {
-        float damage = Random.Range(51, 71);
+        float damage = Random.Range(61, 81);
         target.TakeDamage(damage);
     }
 
